@@ -1,0 +1,182 @@
+body {
+    --bg-opacity: 1;
+    background-color: #f7fafc;
+}
+a {
+    color: #696cff;
+    text-decoration: none;
+  }
+form input, form .form-input, form .form-select {
+    width: 100%;
+    font-weight: 500;
+    --bg-opacity: 1;
+    line-height: inherit;
+    color: inherit;
+    overflow: visible;
+    font-family: inherit;
+    font-size: .875rem !important;
+    background-color: #fff;
+    border-color: #e2e8f0;
+    border-width: 2px;
+    border-radius: .25rem;
+    padding: .5rem .75rem;
+    line-height: 1.5;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0'%3E%3Cpath d='M15.3 9.3a1 1 0 011.4 1.4l-4 4a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4l3.3 3.29 3.3-3.3z'/%3E%3C/svg%3E");
+  -webkit-appearance: none;
+  -moz-appearance:  none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+  background-repeat: no-repeat;
+}
+
+form input:focus, form .form-input:focus, form .form-select:focus  {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: none !important;
+}
+
+form input:last-of-type {
+    margin-bottom: 0;
+}
+
+form label {
+    margin-bottom: 10px;
+}
+
+form label > span {
+    --text-opacity: 1;
+  color: #4a5568;
+  color: rgba(74,85,104,var(--text-opacity));
+  display: block;
+  margin-bottom: 5px;
+}
+
+form label .form-text {
+    font-size: .75rem;
+
+}
+
+form button {
+    --text-opacity: 1;
+    color: #f7fafc;
+    color: rgba(247,250,252,1);
+    font-weight: 600;
+    border-radius: .5rem;
+    --bg-opacity: 1;
+    background-color: #667eea;
+
+    background-color: #7e3af2;
+    /* background-color: rgba(126,58,242, 1); */
+}
+
+button[data-send=false].spin i {
+	display: none;
+}
+
+button[data-send=true].spin {
+	cursor: not-allowed !important;
+}
+
+button[data-send=true].spin:after{
+	content: "Processing...";
+}
+
+button.spin i {
+	margin-right: 3px;
+	line-height: unset;
+}
+
+.dashboard-active-menuX {
+    --bg-opacity: 1;
+    background-color: #805ad5;
+    background-color: rgba(128,90,213,var(--bg-opacity));
+    width: .25rem;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    border-bottom-right-radius: .5rem;
+    border-top-right-radius: .5rem;
+  }
+  
+.active-menu a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: .25rem;
+    height: 2.6845rem;
+    border-radius: .375rem 0 0 .375rem;
+  
+    background: #696cff;
+  }
+
+.dashboard header {
+    margin: .75rem auto 0;
+    width: calc(100% - 1.625rem*2);
+    border-radius: .375rem;
+}
+
+.border-red-600 {
+  --border-opacity: 1 !important;
+  border-color: #e02424 !important;
+  border-color: rgba(224,36,36,1) !important;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group-text {
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  background-clip: padding-box;
+  display: flex;
+  align-items: center;
+  padding: .4375rem .875rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.53;
+  color: #697a8d;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #fff;
+  border: 1px solid #d9dee3;
+  border-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  cursor: pointer !important;
+}
+
+.input-group > .form-input, .input-group > .form-select {
+  position: relative;
+  flex: 1 auto;
+  width: 1%;
+  min-width: 0;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+p + .errors {
+  color: #f56565;
+}
+
+.flashdata-container {
+  min-height: 20px;
+  line-height: 1;
+}
