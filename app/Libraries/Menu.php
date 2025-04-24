@@ -1,5 +1,4 @@
 <?php
-namespace App\Libraries;
 
 namespace App\Libraries;
 
@@ -130,7 +129,6 @@ class Menu {
         return $this->active;
     }
 
-
     /**
      * Set this menu item as active.
      *
@@ -199,7 +197,6 @@ class Menu {
         $html .= "</li>";
         return $html;
     }
-
 
     /*=================================================
      * Static Methods:
