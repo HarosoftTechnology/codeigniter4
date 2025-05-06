@@ -17,6 +17,7 @@ class AuthFilter implements FilterInterface
             //     'type' => 'success', 
             //     'class' => 'text-red-500',
             // ]);
+            // Redirect unauthenticated users to your 'login' route.
             return redirect_to_pager("login", array(), [
                 'id' => 'flash-message', 
                 'type' => 'error', 
@@ -24,8 +25,6 @@ class AuthFilter implements FilterInterface
                 'dismiss' => false, 
                 'message' => "You must login to access that page"
             ]);
-            // Redirect unauthenticated users to your 'login' route.
-            return redirect()->route('login');
         }
     }
 

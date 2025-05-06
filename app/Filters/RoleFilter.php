@@ -23,8 +23,15 @@ class RoleFilter implements FilterInterface
         $userId  = $session->get('user_id');
 
         // Redirect if the user is not authenticated.
-        if (!$userId) {
-            return redirect()->to('/login');
+        if (! session()->has('isLoggedIn')) {
+            // Redirect unauthenticated users to your 'login' route.
+            return redirect_to_pager("login", array(), [
+                'id' => 'flash-message', 
+                'type' => 'error', 
+                'position' => 'bottom-right', 
+                'dismiss' => false, 
+                'message' => "You must login to access that page"
+            ]);
         }
 
         // Ensure a required role alias is provided.
@@ -47,7 +54,7 @@ class RoleFilter implements FilterInterface
         if (!isset($user['role'])) {
             $response = service('response');
             $response->setStatusCode(403);
-            echo view('errors/403'); // Make sure you have this view for a friendly error message.
+            // echo view('errors/403'); // Make sure you have this view for a friendly error message.
             exit;
         }
 

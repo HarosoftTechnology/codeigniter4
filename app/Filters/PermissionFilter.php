@@ -22,9 +22,15 @@ class PermissionFilter implements FilterInterface
         $session = session();
         $userId  = $session->get('user_id');
 
-        if (!$userId) {
-            // Not logged in; redirect to login.
-            return redirect()->to('/login');
+        if (! session()->has('isLoggedIn')) {
+            // Redirect unauthenticated users to your 'login' route.
+            return redirect_to_pager("login", array(), [
+                'id' => 'flash-message', 
+                'type' => 'error', 
+                'position' => 'bottom-right', 
+                'dismiss' => false, 
+                'message' => "You must login to access that page"
+            ]);
         }
 
         // The first argument should be the required permission alias.
@@ -48,7 +54,7 @@ class PermissionFilter implements FilterInterface
             // Here, we'll return a 403 response with a custom error view.
             $response = service('response');
             $response->setStatusCode(403);
-            echo view('errors/html/error_403', array('message' => "Access Denied!")); // Create this view to display an appropriate message.
+            echo view('errors/html/error_403', array('message' => "Access Denied!")); 
             exit;
         }
     }

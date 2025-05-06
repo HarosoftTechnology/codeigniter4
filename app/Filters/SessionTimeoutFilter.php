@@ -42,12 +42,6 @@ class SessionTimeoutFilter implements FilterInterface
                 // $session->destroy();
                 $session->remove(['user_id', 'username', 'isLoggedIn']);
 
-
-                // Set flashdata to notify the user.
-                // setFlashdata("Session timeout! Login again.", [
-                //     'type' => 'error', 
-                //     'class' => 'text-red-500', 
-                // ]);
                 return redirect_to_pager("login", array(), [
                     'id' => 'flash-message', 
                     'type' => 'error', 
@@ -55,10 +49,7 @@ class SessionTimeoutFilter implements FilterInterface
                     'dismiss' => false, 
                     'message' => "Session timeout! Login again."
                 ]);
-                // $session->setFlashdata('timeout_message', 'Session timeout! Login again.');
                 
-                // Return a Response to halt further processing.
-                return redirect()->route('login');
             }
 
             // Update the activity timestamp for each request.

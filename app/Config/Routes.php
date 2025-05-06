@@ -7,6 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Login::index', ['as' => 'home']);
 $routes->match(['GET', 'POST'], 'login', 'Login::index', ['as' => 'login']);
+$routes->get('about', function () {
+    return view('about');
+}, ['filter' => 'auth']);
+
 $routes->match(['GET', 'POST'], 'forgot/password', 'Login::forgot_password', ['as' => 'forgot-password']);
 $routes->match(['GET', 'POST'], 'reset/password', 'Login::reset_password', ['as' => 'reset-password']);
 $routes->match(['GET', 'POST'], 'signup', 'Signup::index', ['as' => 'signup']);
@@ -19,5 +23,5 @@ $routes->match(['GET', 'POST'], 'admincp/task/category/create', 'TaskCategory::c
 $routes->match(['GET', 'POST'], 'admincp/task/category/update/(:num)', 'TaskCategory::update/$1', ['as' => 'edit-task-category']);
 $routes->delete('admincp/task/category/delete/(:num)', 'TaskCategory::delete/$1');
 $routes->get('admincp', 'Dashboard::index', ['filter' => 'auth', 'as' => 'admincp']);
-$routes->get('admincp/dashboard', 'Dashboard::index', ['filter' => ['auth', 'permission:admin-access'], 'as' => 'dashboard']);
+$routes->get('admincp/dashboard', 'Dashboard::index', ['filter' => ['role:admin-access'], 'as' => 'dashboard']);
 $routes->get('logout', 'Logout::index', ['as' => 'logout']);

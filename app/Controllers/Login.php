@@ -75,21 +75,24 @@ class Login extends BaseController
                 ]);
 
                 // Check if a resume URL was stored (from a previous session timeout)
-                $redirectUrl = !empty($user['resume']) ? $user['resume'] : url_to_pager('dashboard');
-
-                // Clear the resume field after using it
-                $model->update($user['id'], ['resume' => null]);
+                if(!empty($user['resume'])) {
+                    $session->set('resume', $user['resume']);
+                    $redirect =  $session->get('resume');
+                    $model->update($user['id'], ['resume' => null]); // Clear the resume field after using it
+                }else{
+                    $redirect = url_to_pager('dashboard');
+                }
 
                 if ($this->request->isAJAX()) {
                     return $this->response->setJSON([
                         'type'     => 'success', 
-                        'redirect' => url_to_pager('dashboard'), 
+                        'redirect' => $redirect,
                         'message'  => 'Login successful'
                     ]);
                 }
-                return redirect_to_pager("dashboard", [], [
+                return redirect_to($redirect, [
                     'id'       => 'flash-message',
-                    'type'     => 'error',
+                    'type'     => 'success',
                     'position' => 'bottom-right',
                     'dismiss'  => false,
                     'message'  => "Login successful"
