@@ -30,12 +30,11 @@ class SessionTimeoutFilter implements FilterInterface
             // If the time difference exceeds the timeout...
             if (($currentTime - $lastActivity) > $this->timeout) {
                 $user_id = $session->get('user_id');
-                $currentUrl = current_url(); // Capture the current URL
 
                 // If a user is logged in, update their resume field.
                 if ($user_id) {
                     $userModel = new UserModel();
-                    $userModel->update($user_id, ['resume' => $currentUrl]);
+                    $userModel->update($user_id, ['resume' => current_url()]); // Capture the current URL
                 }
 
                 // Destroy the session.
